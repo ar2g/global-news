@@ -35,14 +35,14 @@ export const TopStories = ({countryCode}) => {
 
   return (
     <Fragment>
-        {topStories && topStories.map(i => {
+        {topStories ? topStories.map(i => {
           return (
             <Fragment key={`frag${i.url}`}>
               {/* <img src={i.urlToImage} key={`img${i.urlToImage}`} /> */}
               <p key={`p${i.url}`}>{i.title}</p>
             </Fragment>
           )
-        })}
+        }) : <p>Loading stories...</p>}
     </Fragment>
   )
   
