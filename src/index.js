@@ -1,2 +1,2 @@
-import Form from './components/Form.js'
+import App from './components/App.js'
 
