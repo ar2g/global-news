@@ -15,22 +15,30 @@ export const TopStories = ({countryCode}) => {
   
   const [topStories, setTopStories] = useState(null);
   
-  const getData = async () => {
-    
-    try {
-      const response = await fetch(API_URL, requestOptions)
-      const data = await response.json()
-      const topStories = data.articles.slice(0,5)
-      console.log(`topStories`, topStories)
-      setTopStories(topStories)
-
-    } catch(error) {
-      console.error(error)
-    }
-  } 
-
+  
   useEffect(() => {
-    getData()
+    let isCancelled = false
+    console.log(isCancelled)
+    if(!isCancelled) {
+      const getData = async () => {
+        
+        try {
+          const response = await fetch(API_URL, requestOptions)
+          const data = await response.json()
+          const topStories = data.articles.slice(0,5)
+          console.log(`topStories`, topStories)
+          if(!isCancelled && topStories) {
+            setTopStories(topStories)
+          }
+        } catch(error) {
+          console.error(error)
+        }
+      } 
+      getData()
+    }
+    return () => {
+      isCancelled = true
+    }
   }, [countryCode])
 
   return (
