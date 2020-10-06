@@ -1,3 +1,5 @@
+"use strict";
+
 import React, {Fragment, useEffect, useState} from 'react'
 
 export const TopStories = ({countryCode}) => {
