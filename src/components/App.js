@@ -9,7 +9,6 @@ const App = () => {
   return (
     <Fragment>
       <h1>GLOBAL NEWS</h1>
-      {countryCode}
       <h4>Click on the country for today's top stories.</h4>
       <button onClick={() => setCountryCode('gb')}>UK</button>
       <button onClick={() => setCountryCode('us')}>US</button>
