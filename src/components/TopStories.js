@@ -1,7 +1,10 @@
 "use strict";
 
 import React, {Fragment, useEffect, useState} from 'react'
+import {Card} from 'react-bootstrap'
 import {getTitle} from '../countries'
+
+import './responsive.css'
 
 export const TopStories = ({countryCode}) => {
   
@@ -50,14 +53,29 @@ export const TopStories = ({countryCode}) => {
       <br/>
       {topStories && <h5>Top stories in {getTitle(countryCode)}</h5>}
       <br/>
-      {topStories ? topStories.map(i => {
-        return (
-          <Fragment key={`frag${i.url}`}>
-            {/* <img src={i.urlToImage} key={`img${i.urlToImage}`} /> */}
-            <p key={`p${i.url}`}>{i.title}</p>
-          </Fragment>
-        )
-      }) : <p>Loading stories...</p>}
+      <div className={'cardContainer'}>
+      {
+        topStories ? topStories.map(i => {
+          return (
+            <Fragment key={`frag${i.url}`}>
+              <Card 
+                // style={{width: '33%'}} 
+                key={`card${i.urlToImage}`}
+              >
+                <Card.Img variant="top" src={i.urlToImage} /> 
+                <Card.Body>
+                  <Card.Title>{i.title}</Card.Title>
+                  <Card.Text id='cardText'>
+                    {i.description}
+                  </Card.Text>
+                  <Card.Link href={i.url}>Read More</Card.Link>
+                </Card.Body>
+              </Card>
+            </Fragment>
+          )
+        }) : <p>Loading stories...</p>
+      }
+      </div>
     </Fragment>
   )
 }

@@ -1,0 +1,29 @@
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.buttonGroup .btn {
+  flex:  0 1 calc(20% - 0.5em);
+}
+
+.cardContainer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    flex: 0 1 calc(20% - 1em);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .buttonGroup .btn {
+    font-size: 15px;
+  }
+}
