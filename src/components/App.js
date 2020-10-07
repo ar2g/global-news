@@ -4,6 +4,7 @@ import React, { useState, Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import {CountryButton} from './CountryButton'
 import {TopStories} from './TopStories'
+import {ThemePicker} from './ThemePicker'
 
 import {countries} from '../countries'
 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <Fragment>
       <h1>GLOBAL NEWS</h1>
+      <ThemePicker />
       <h5>Click a country for today's top stories.</h5>
       {
         Object.keys(countries).map((c, index) => {
