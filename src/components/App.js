@@ -2,7 +2,10 @@
 
 import React, { useState, Fragment } from 'react'
 import ReactDOM from 'react-dom'
+import {CountryButton} from './CountryButton'
 import {TopStories} from './TopStories'
+
+import {countries} from '../countries'
 
 const App = () => {
 
@@ -11,12 +14,18 @@ const App = () => {
   return (
     <Fragment>
       <h1>GLOBAL NEWS</h1>
-      <h4>Click on the country for today's top stories.</h4>
-      <button onClick={() => setCountryCode('gb')}>UK</button>
-      <button onClick={() => setCountryCode('us')}>US</button>
-      <button onClick={() => setCountryCode('in')}>IN</button>
-      <button onClick={() => setCountryCode('fr')}>FR</button>
-      <button onClick={() => setCountryCode('au')}>AU</button>
+      <h5>Click a country for today's top stories.</h5>
+      {
+        Object.keys(countries).map((c, index) => {
+          return (
+            <Fragment key={`frag-${c}`} >
+              <CountryButton key={`btn-${c}`} onClick={() => setCountryCode(c)} countryCode={c} />
+              {index < Object.keys(countries).length - 1 && ' ' }
+            </Fragment>
+          )
+        })
+      }
+      <br/>
       <TopStories countryCode={countryCode} />
     </Fragment>
   )
