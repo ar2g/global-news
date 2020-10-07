@@ -1,0 +1,28 @@
+# global-news
+
+global-news is a news aggregator written to fulfill the coding exercise for a BBC role.
+
+## Installation
+
+```js
+npm install
+```
+
+## Development
+
+```js
+npm start
+```
+
+## Build
+runs webpack in production mode and delivers bundled js and index.html to the `./dist` directory.
+```js 
+npm run build
+```
+
+## Run
+builds and spins up python's SimpleHTTPServer, serving at [localhost:8001](localhost:8001)
+
+```js
+npm run launch
+```
