@@ -2,38 +2,23 @@
 
 import React, { useState, Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import {CountryButton} from './CountryButton'
-import {TopStories} from './TopStories'
-import {ThemePicker} from './ThemePicker'
 
-import {countries} from '../countries'
+import {Title} from './Title'
+import {ThemePicker} from './ThemePicker'
+import {Instructions} from './Instructions'
+import {ButtonGroup} from './ButtonGroup'
+import {TopStories} from './TopStories'
 
 const App = () => {
 
   const [countryCode, setCountryCode] = useState('gb')
-  const [activeButton, setActiveButton] = useState('gb')
 
   return (
     <Fragment>
-      <h1>GLOBAL NEWS</h1>
+      <Title />
       <ThemePicker />
-      <h5>Click a country for today's top stories.</h5>
-      {
-        Object.keys(countries).map((c, index) => {
-          return (
-            <Fragment key={`frag-${c}`} >
-              <CountryButton 
-                key={`btn-${c}`} 
-                id={`btn-${c}`} 
-                onClick={(e) => {setCountryCode(c), setActiveButton(e.target.id.split('-')[2])}} 
-                countryCode={c} 
-                variant={activeButton === c ? 'primary' : 'secondary'} 
-              />
-              {index < Object.keys(countries).length - 1 && ' ' }
-            </Fragment>
-          )
-        })
-      }
+      <Instructions />
+      <ButtonGroup setParentCode={setCountryCode}/>
       <br/>
       <TopStories countryCode={countryCode} />
     </Fragment>
