@@ -14,7 +14,7 @@ export const CountryButton = ({countryCode, onClick, variant}) => {
       key={`inner-btn-${countryCode}`}
       id={`inner-btn-${countryCode}`}
     >
-      { countries[countryCode].name } { countries[countryCode].flag }
+      { countries[countryCode].flag } { countries[countryCode].name }
     </Button>
   )
 
