@@ -4,18 +4,18 @@ import React, {Fragment, useEffect, useState} from 'react'
 import {Card} from 'react-bootstrap'
 import {getTitle} from '../countries'
 
-import './responsive.css'
+import '../responsive.css'
 
 export const TopStories = ({countryCode}) => {
   
   const API_URL = `https://newsapi.org/v2/top-headlines?country=${countryCode}`
   
-  let headers = new Headers();
-  headers.append("x-api-key", "1198979c43af49d18fcdeffeeec571de")
-  
   let requestOptions = {
     method: 'GET',
-    headers,
+    mode: 'cors',
+    headers: {
+      'x-api-key': '1198979c43af49d18fcdeffeeec571de'
+    },
     redirect: 'follow'
   }
   
