@@ -10,6 +10,7 @@ import {countries} from '../countries'
 const App = () => {
 
   const [countryCode, setCountryCode] = useState('gb')
+  const [activeButton, setActiveButton] = useState('gb')
 
   return (
     <Fragment>
@@ -19,7 +20,13 @@ const App = () => {
         Object.keys(countries).map((c, index) => {
           return (
             <Fragment key={`frag-${c}`} >
-              <CountryButton key={`btn-${c}`} onClick={() => setCountryCode(c)} countryCode={c} />
+              <CountryButton 
+                key={`btn-${c}`} 
+                id={`btn-${c}`} 
+                onClick={(e) => {setCountryCode(c), setActiveButton(e.target.id.split('-')[2])}} 
+                countryCode={c} 
+                variant={activeButton === c ? 'primary' : 'secondary'} 
+              />
               {index < Object.keys(countries).length - 1 && ' ' }
             </Fragment>
           )
