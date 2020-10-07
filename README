@@ -21,7 +21,7 @@ npm run build
 ```
 
 ## Run
-builds and spins up python's SimpleHTTPServer, serving at [localhost:8001](localhost:8001)
+builds and spins up python's SimpleHTTPServer, serving at [localhost:8001](localhost:8001).
 
 ```js
 npm run launch
