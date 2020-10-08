@@ -8,6 +8,12 @@ export const ButtonGroup = ({setParentCode}) => {
 
   const [activeButton, setActiveButton] = useState('gb')
 
+  const onClick = e => {
+    let countryCode = e.target.id.split('-')[2]
+    setParentCode(countryCode)
+    setActiveButton(countryCode)
+  }
+
   return (
     <div className='buttonGroup'>
       {
@@ -17,7 +23,7 @@ export const ButtonGroup = ({setParentCode}) => {
               <CountryButton 
                 key={`btn-${c}`} 
                 id={`btn-${c}`} 
-                onClick={(e) => {setParentCode(c), setActiveButton(e.target.id.split('-')[2])}} 
+                onClick={onClick} 
                 countryCode={c} 
                 variant={activeButton === c ? 'primary' : 'secondary'} 
               />
