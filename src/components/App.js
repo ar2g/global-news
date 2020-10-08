@@ -9,21 +9,33 @@ import {Instructions} from './Instructions'
 import {ButtonGroup} from './ButtonGroup'
 import {StoryProvider} from './StoryProvider'
 
+import {ErrorBoundary} from './ErrorBoundary'
+
 const App = () => {
 
   const [countryCode, setCountryCode] = useState('gb')
 
   return (
     <Fragment>
-      <Title />
-      <ThemePicker />
-      <Instructions />
-      <ButtonGroup setParentCode={setCountryCode}/>
+
+      <ErrorBoundary>
+        <Title />
+        <ThemePicker />
+        <Instructions />
+      </ErrorBoundary>
+
+      <ErrorBoundary>
+        <ButtonGroup setParentCode={setCountryCode}/>
+      </ErrorBoundary>
+
       <br/>
-      <StoryProvider countryCode={countryCode} />
+
+      <ErrorBoundary>
+        <StoryProvider countryCode={countryCode} />
+      </ErrorBoundary>
+
     </Fragment>
   )
-
 }
 
 export default App;
