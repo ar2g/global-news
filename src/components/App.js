@@ -7,7 +7,7 @@ import {Title} from './Title'
 import {ThemePicker} from './ThemePicker'
 import {Instructions} from './Instructions'
 import {ButtonGroup} from './ButtonGroup'
-import {TopStories} from './TopStories'
+import {StoryProvider} from './StoryProvider'
 
 const App = () => {
 
@@ -20,7 +20,7 @@ const App = () => {
       <Instructions />
       <ButtonGroup setParentCode={setCountryCode}/>
       <br/>
-      <TopStories countryCode={countryCode} />
+      <StoryProvider countryCode={countryCode} />
     </Fragment>
   )
 
